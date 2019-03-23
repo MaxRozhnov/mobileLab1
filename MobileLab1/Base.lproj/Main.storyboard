@@ -48,23 +48,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aew-Vi-WAf" userLabel="LoginButton">
-                                <rect key="frame" x="166" y="453" width="43" height="30"/>
+                                <rect key="frame" x="166" y="445" width="43" height="30"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rU8-W0-hcy"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sb0-w2-Dxo">
-                                <rect key="frame" x="62" y="360" width="251" height="30"/>
+                                <rect key="frame" x="62" y="352" width="251" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfK-22-CRK">
-                                <rect key="frame" x="62" y="408" width="251" height="30"/>
+                                <rect key="frame" x="62" y="400" width="251" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,7 +80,7 @@
                             <constraint firstItem="eGB-pR-zsO" firstAttribute="centerX" secondItem="aew-Vi-WAf" secondAttribute="centerX" id="T0J-td-MtY"/>
                             <constraint firstItem="aew-Vi-WAf" firstAttribute="top" secondItem="mfK-22-CRK" secondAttribute="bottom" constant="15" id="jpU-xj-ckX"/>
                             <constraint firstItem="aew-Vi-WAf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="166" id="mpz-cD-Lhn"/>
-                            <constraint firstItem="Sb0-w2-Dxo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="272" id="nzJ-x5-coy"/>
+                            <constraint firstItem="Sb0-w2-Dxo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="264" id="nzJ-x5-coy"/>
                             <constraint firstItem="eGB-pR-zsO" firstAttribute="centerX" secondItem="Sb0-w2-Dxo" secondAttribute="centerX" id="sAg-KW-2RP"/>
                             <constraint firstItem="eGB-pR-zsO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="109" id="zIX-IA-Kh1"/>
                         </constraints>
@@ -89,7 +89,8 @@
                     <navigationItem key="navigationItem" id="HdO-mK-Nru"/>
                     <connections>
                         <outlet property="userNameTextField" destination="Sb0-w2-Dxo" id="Mpb-7E-sHh"/>
-                        <outlet property="userPasswordField" destination="mfK-22-CRK" id="8GI-yb-dMz"/>
+                        <outlet property="userPasswordTextField" destination="mfK-22-CRK" id="8GI-yb-dMz"/>
+                        <segue destination="mQe-N2-wgF" kind="show" identifier="successfullLoginSegue" id="JF2-m3-19q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -147,7 +148,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AC3-Wv-tk9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="default" id="AC3-Wv-tk9">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AC3-Wv-tk9" id="Rga-ZN-zih">
@@ -164,7 +165,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0U2-3E-b0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86" y="811"/>
+            <point key="canvasLocation" x="-682" y="727"/>
         </scene>
     </scenes>
 </document>
