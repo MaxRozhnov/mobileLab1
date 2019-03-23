@@ -15,17 +15,13 @@ class LoginController: UIViewController {
     }
     @IBOutlet private var userPasswordField: UITextField!
 
-
     @IBOutlet private var userNameTextField: UITextField!
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -35,5 +31,4 @@ class LoginController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
