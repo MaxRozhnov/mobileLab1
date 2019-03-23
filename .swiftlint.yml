@@ -1,0 +1,47 @@
+cyclomatic_complexity: 12
+file_length: 550
+function_body_length: 80
+function_parameter_count: 8
+line_length: 150
+type_body_length: 300
+included:
+  - MobileLab1
+excluded:
+  - Pods
+identifier_name:
+  min_length:
+    error: 1
+    warning: 1
+
+opt_in_rules:
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - empty_count
+  - empty_string
+  - explicit_init
+  - force_unwrapping
+  - fallthrough
+  - file_name
+  - first_where
+  - identical_operands
+  - implicit_return
+  - implicitly_unwrapped_optional
+  - last_where
+  - legacy_random
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_parameters
+  - nslocalizedstring_key
+  - operator_usage_whitespace
+  - private_action
+  - private_outlet
+  - strong_iboutlet
+  - trailing_closure
+  - unavailable_function
+  - unneeded_parentheses_in_closure_argument
+  - unused_import
+  - unused_private_declaration
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - yoda_condition

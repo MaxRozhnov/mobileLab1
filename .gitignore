@@ -1,0 +1,12 @@
+# System files #
+################
+.DS_Store
+.swp
+
+# Pods folder #
+###############
+Pods/
+crypto-app.xcworkspace/xcuserdata/*
+xcuserdata/
+crypto-app.xcodeproj/project.xcworkspace/xcuserdata/*
+*/xcuserdata/*
