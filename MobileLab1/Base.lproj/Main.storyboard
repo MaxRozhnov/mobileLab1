@@ -122,19 +122,19 @@
                                                 <rect key="frame" x="186" y="16" width="181" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="given-name"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Middle Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jKJ-Ve-hsy">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Middle Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jKJ-Ve-hsy">
                                                 <rect key="frame" x="186" y="78" width="181" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="additional-name"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="additional-name"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b0B-eq-7PE">
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b0B-eq-7PE">
                                                 <rect key="frame" x="186" y="140" width="181" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" textContentType="family-name"/>
                                             </textField>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0EH-4c-7y0">
                                                 <rect key="frame" x="8" y="194" width="359" height="29"/>
@@ -155,27 +155,30 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please, tell us about yourself in a few words" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-dA-SO3">
                                                 <rect key="frame" x="8" y="488" width="359" height="194"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="194" id="JyD-GE-hDE"/>
+                                                </constraints>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dZP-MS-31E">
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dZP-MS-31E">
                                                 <rect key="frame" x="8" y="374" width="359" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="username"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEa-Kb-1eW">
+                                            <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEa-Kb-1eW">
                                                 <rect key="frame" x="8" y="412" width="359" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-type password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Md2-OQ-5zO">
+                                            <textField opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-type password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Md2-OQ-5zO">
                                                 <rect key="frame" x="8" y="450" width="359" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -189,8 +192,8 @@
                                             <constraint firstItem="vEa-Kb-1eW" firstAttribute="top" secondItem="dZP-MS-31E" secondAttribute="bottom" constant="8" id="5ev-ZC-GfE"/>
                                             <constraint firstAttribute="trailing" secondItem="0EH-4c-7y0" secondAttribute="trailing" constant="8" id="6hh-Qo-OZe"/>
                                             <constraint firstAttribute="trailing" secondItem="Md2-OQ-5zO" secondAttribute="trailing" constant="8" id="ATP-UX-2HY"/>
-                                            <constraint firstItem="aA9-dA-SO3" firstAttribute="top" secondItem="Md2-OQ-5zO" secondAttribute="bottom" constant="8" id="AXs-Yc-R8B"/>
                                             <constraint firstItem="Q9D-va-dn9" firstAttribute="leading" secondItem="2pb-cw-mrk" secondAttribute="leading" constant="8" id="CHF-oZ-1jg"/>
+                                            <constraint firstAttribute="trailing" secondItem="aA9-dA-SO3" secondAttribute="trailing" constant="8" id="Drc-qC-ZF0"/>
                                             <constraint firstItem="0EH-4c-7y0" firstAttribute="top" secondItem="X8w-zM-0hM" secondAttribute="bottom" constant="16" id="FaH-wS-TkQ"/>
                                             <constraint firstItem="Q9D-va-dn9" firstAttribute="top" secondItem="0EH-4c-7y0" secondAttribute="bottom" constant="16" id="Fwt-99-9HH"/>
                                             <constraint firstAttribute="trailing" secondItem="vEa-Kb-1eW" secondAttribute="trailing" constant="8" id="KAf-dX-ej0"/>
@@ -198,15 +201,14 @@
                                             <constraint firstItem="X8w-zM-0hM" firstAttribute="leading" secondItem="2pb-cw-mrk" secondAttribute="leading" constant="8" id="La0-PN-hEG"/>
                                             <constraint firstAttribute="trailing" secondItem="b0B-eq-7PE" secondAttribute="trailing" constant="8" id="Qsb-ID-MMv"/>
                                             <constraint firstItem="Md2-OQ-5zO" firstAttribute="top" secondItem="vEa-Kb-1eW" secondAttribute="bottom" constant="8" id="TPu-vJ-Civ"/>
-                                            <constraint firstItem="aA9-dA-SO3" firstAttribute="leading" secondItem="2pb-cw-mrk" secondAttribute="leading" constant="8" id="WCY-HB-V9W"/>
                                             <constraint firstItem="dZP-MS-31E" firstAttribute="leading" secondItem="2pb-cw-mrk" secondAttribute="leading" constant="8" id="c22-Go-OEX"/>
                                             <constraint firstAttribute="trailing" secondItem="7xS-yl-bd6" secondAttribute="trailing" constant="8" id="dtW-za-Pku"/>
                                             <constraint firstItem="7xS-yl-bd6" firstAttribute="leading" secondItem="X8w-zM-0hM" secondAttribute="trailing" constant="8" id="edI-AE-2r9"/>
                                             <constraint firstAttribute="trailing" secondItem="jKJ-Ve-hsy" secondAttribute="trailing" constant="8" id="fC5-Wg-hfR"/>
                                             <constraint firstAttribute="trailing" secondItem="Q9D-va-dn9" secondAttribute="trailing" constant="8" id="fVL-UK-bi4"/>
-                                            <constraint firstAttribute="bottom" secondItem="aA9-dA-SO3" secondAttribute="bottom" constant="8" id="guN-d1-eBP"/>
                                             <constraint firstItem="X8w-zM-0hM" firstAttribute="top" secondItem="2pb-cw-mrk" secondAttribute="top" constant="8" id="kEJ-pw-Ktl"/>
-                                            <constraint firstAttribute="trailing" secondItem="aA9-dA-SO3" secondAttribute="trailing" constant="8" id="pqj-pE-5tg"/>
+                                            <constraint firstItem="aA9-dA-SO3" firstAttribute="leading" secondItem="2pb-cw-mrk" secondAttribute="leading" constant="8" id="m0J-ii-1gZ"/>
+                                            <constraint firstItem="aA9-dA-SO3" firstAttribute="top" secondItem="Md2-OQ-5zO" secondAttribute="bottom" constant="8" id="rbN-x6-KUQ"/>
                                             <constraint firstItem="dZP-MS-31E" firstAttribute="top" secondItem="Q9D-va-dn9" secondAttribute="bottom" constant="16" id="t7L-In-hzt"/>
                                             <constraint firstItem="Md2-OQ-5zO" firstAttribute="leading" secondItem="2pb-cw-mrk" secondAttribute="leading" constant="8" id="vNe-Y4-Ouj"/>
                                             <constraint firstItem="jKJ-Ve-hsy" firstAttribute="top" secondItem="7xS-yl-bd6" secondAttribute="bottom" constant="32" id="xXF-Kc-8YB"/>
@@ -235,11 +237,15 @@
                     <connections>
                         <outlet property="aboutTextView" destination="aA9-dA-SO3" id="ydj-ZV-Hlq"/>
                         <outlet property="birthDatePicker" destination="Q9D-va-dn9" id="pHU-BE-dXT"/>
+                        <outlet property="constraintContentHeight" destination="rBt-DE-gdH" id="lXO-hi-olo"/>
                         <outlet property="contentView" destination="2pb-cw-mrk" id="VXG-R8-aBD"/>
                         <outlet property="firstNameTextField" destination="7xS-yl-bd6" id="DgW-wR-9w2"/>
                         <outlet property="genderSegmentedControl" destination="0EH-4c-7y0" id="5S1-dd-hVN"/>
                         <outlet property="lastNameTextField" destination="b0B-eq-7PE" id="Ehe-Wa-JrG"/>
+                        <outlet property="loginTextField" destination="dZP-MS-31E" id="c9V-s2-bW9"/>
                         <outlet property="middleNameTextField" destination="jKJ-Ve-hsy" id="5Rg-SM-Svt"/>
+                        <outlet property="passwordTextField" destination="vEa-Kb-1eW" id="jKL-dN-1H2"/>
+                        <outlet property="repeatPasswordTextField" destination="Md2-OQ-5zO" id="776-GS-BSg"/>
                         <outlet property="scrollView" destination="Npn-UB-TiX" id="HEj-NT-FcZ"/>
                     </connections>
                 </viewController>
