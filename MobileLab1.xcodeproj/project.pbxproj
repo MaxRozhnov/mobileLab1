@@ -15,6 +15,7 @@
 		50CDDB20223FCE5D00036919 /* MobileLab1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50CDDB1E223FCE5D00036919 /* MobileLab1.xcdatamodeld */; };
 		50CDDB22223FCE5E00036919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDDB21223FCE5E00036919 /* Assets.xcassets */; };
 		50CDDB25223FCE5E00036919 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDDB23223FCE5E00036919 /* LaunchScreen.storyboard */; };
+		50DC1FAA224D15B600C823B3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC1FA9224D15B600C823B3 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		50CDDB21223FCE5E00036919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50CDDB24223FCE5E00036919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50CDDB26223FCE5E00036919 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50DC1FA9224D15B600C823B3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				50CDDB1E223FCE5D00036919 /* MobileLab1.xcdatamodeld */,
 				50ABE4CB2240307100F2CCC0 /* RegistrationController.swift */,
 				5001E4C222467AA100959835 /* LoginController.swift */,
+				50DC1FA9224D15B600C823B3 /* UserModel.swift */,
 			);
 			path = MobileLab1;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				50CDDB1A223FCE5D00036919 /* ViewController.swift in Sources */,
 				50ABE4CC2240307100F2CCC0 /* RegistrationController.swift in Sources */,
 				50CDDB18223FCE5D00036919 /* AppDelegate.swift in Sources */,
+				50DC1FAA224D15B600C823B3 /* UserModel.swift in Sources */,
 				5001E4C322467AA100959835 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

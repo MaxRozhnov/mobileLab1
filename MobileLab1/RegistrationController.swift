@@ -44,6 +44,20 @@ class RegistrationController: UIViewController {
         self.passwordTextField.delegate = self
         self.repeatPasswordTextField.delegate = self
 
+        self.firstNameTextField.layer.borderColor = UIColor.red.cgColor
+        self.middleNameTextField.layer.borderColor = UIColor.red.cgColor
+        self.lastNameTextField.layer.borderColor = UIColor.red.cgColor
+        self.loginTextField.layer.borderColor = UIColor.red.cgColor
+        self.passwordTextField.layer.borderColor = UIColor.red.cgColor
+        self.repeatPasswordTextField.layer.borderColor = UIColor.red.cgColor
+
+        self.firstNameTextField.layer.cornerRadius = 5.0
+        self.middleNameTextField.layer.cornerRadius = 5.0
+        self.lastNameTextField.layer.cornerRadius = 5.0
+        self.loginTextField.layer.cornerRadius = 5.0
+        self.passwordTextField.layer.cornerRadius = 5.0
+        self.repeatPasswordTextField.layer.cornerRadius = 5.0
+
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(validateUserData))
 
         NotificationCenter.default.addObserver(
@@ -86,12 +100,40 @@ class RegistrationController: UIViewController {
     }
 
     @objc func validateUserData() {
-        var dataIsValid = true
-        if let personName = firstNameTextField.text {
-            if personName.isEmpty {
-                //highlight field
-                dataIsValid = false
+        var invalidFields: [UIView]// = []
+        //todo: validate these fields
+        invalidFields = []
+        if invalidFields.isEmpty {
+            //todo: create user instance
+        } else {
+            self.highlight(fields: invalidFields, withDuration: 3.0)
+        }
+    }
+
+    func showBorder(forViews views: [UIView]) {
+        for view in views {
+            if view is UITextView {
+                view.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
             }
+            view.layer.borderWidth = 1.0
+        }
+    }
+
+    func hideBorder(forViews views: [UIView]) {
+        for view in views {
+            if view is UITextView {
+                view.layer.borderWidth = 0.5
+                view.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+            } else {
+                view.layer.borderWidth = 0.0
+            }
+        }
+    }
+
+    func highlight(fields: [UIView], withDuration seconds: TimeInterval) {
+        showBorder(forViews: fields)
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.hideBorder(forViews: fields)
         }
     }
 
