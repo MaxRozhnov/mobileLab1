@@ -28,6 +28,38 @@ class RegistrationController: UIViewController {
     private var aboutFieldIsActive: Bool = false
     private var keyboardHeight: CGFloat?
 
+    private var firstName: String {
+        return firstNameTextField.text ?? ""
+    }
+    private var middleName: String {
+        return middleNameTextField.text ?? ""
+    }
+    private var lastName: String {
+        return lastNameTextField.text ?? ""
+    }
+    private var gender: Gender {
+        switch genderSegmentedControl.selectedSegmentIndex {
+        case 0:
+            return .male
+        case 1:
+            return .female
+        default:
+            return .male
+        }
+    }
+    private var birthDate: Date {
+        return birthDatePicker.date
+    }
+    private var login: String {
+        return loginTextField.text ?? ""
+    }
+    private var password: String {
+        return passwordTextField.text ?? ""
+    }
+    private var retypedPassword: String {
+        return repeatPasswordTextField.text ?? ""
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
@@ -104,7 +136,12 @@ class RegistrationController: UIViewController {
         //todo: validate these fields
         invalidFields = []
         if invalidFields.isEmpty {
-            //todo: create user instance
+            let user = User(firstName: firstName,
+                            middleName: middleName,
+                            lastName: lastName,
+                            dateOfBirth: birthDate,
+                            gender: gender)
+            print(user)
         } else {
             self.highlight(fields: invalidFields, withDuration: 3.0)
         }
