@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 enum Gender: String {
-    case male = "Male"
-    case female = "Female"
+    case male
+    case female
+
+//    init?(from: String) {
+//        
+//    }
 }
 
-struct User {
+struct UserModel {
     let firstName: String
     let middleName: String
     let lastName: String
@@ -21,6 +26,11 @@ struct User {
     let dateOfBirth: Date
 
     let gender: Gender
+
+    let login: String
+    let passwordHash: Int
+
+    let profilePicture: UIImage
 
     //todo add picture here
 }
