@@ -9,13 +9,13 @@
 import UIKit
 
 class UserCell: UITableViewCell {
-
+// MARK: - Outlets
     @IBOutlet private var firstNameLabel: UILabel!
     @IBOutlet private var lastNameLabel: UILabel!
     @IBOutlet private var genderLabel: UILabel!
     @IBOutlet private var dateOfBirthLabel: UILabel!
     @IBOutlet private var profilePicture: UIImageView!
-
+// MARK: - public properties
     var user: UserModel? {
         get {
             return modeledUser
@@ -29,7 +29,7 @@ class UserCell: UITableViewCell {
             profilePicture.image = modeledUser?.profilePicture
         }
     }
-
+// MARK: - private properties
     private var modeledUser: UserModel?
     private var firstName: String {
         get {
@@ -63,7 +63,7 @@ class UserCell: UITableViewCell {
             dateOfBirthLabel.text = "\(newValue.age) years old"
         }
     }
-
+// MARK: - overriden functions
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -71,7 +71,7 @@ class UserCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 }
-
+// MARK: - extensions
 extension Date {
     var age: Int {
         return Calendar.current.dateComponents([.year], from: self, to: Date()).year ?? 0
