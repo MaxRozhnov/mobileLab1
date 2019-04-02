@@ -56,6 +56,7 @@ class RegistrationController: UIViewController {
     private var retypedPassword: String {
         return repeatPasswordTextField.text ?? ""
     }
+    private var logins: [String] = []
 // MARK: - IBActions
     @IBAction private func pictureTapped(_ sender: Any) {
         view.endEditing(true)
@@ -109,6 +110,8 @@ class RegistrationController: UIViewController {
             self.passwordTextField.isHidden = true
             self.repeatPasswordTextField.isHidden = true
             self.userPic.image = selectedUserData.profilePicture
+            self.aboutTextView.text = selectedUserData.about
+            self.aboutTextView.textColor = .black
         } else {
             self.navigationItem.title = "Registration"
             viewSetup()
@@ -144,18 +147,26 @@ class RegistrationController: UIViewController {
     }
     @objc private func validateUserData() {
         var invalidFields: [UIView] = []
-        if firstName.isEmpty {
+        if firstName.isEmpty || !isValidFirstName(userName: firstName) {
             invalidFields.append(firstNameTextField)
         }
-        if lastName.isEmpty {
+        if lastName.isEmpty || !isValidLastName(userName: lastName) {
             invalidFields.append(lastNameTextField)
         }
         if login.isEmpty {
+            invalidFields.append(loginTextField)
+        } else if selectedUser == nil && logins.contains(login) {
             invalidFields.append(loginTextField)
         }
         if password.isEmpty || password != retypedPassword {
             invalidFields.append(passwordTextField)
             invalidFields.append(repeatPasswordTextField)
+        }
+        if selectedUser == nil && !isValidPassword(userPassword: password) {
+            invalidFields.append(passwordTextField)
+        }
+        if aboutTextView.textColor == .lightGray || aboutTextView.text.isEmpty {
+            invalidFields.append(aboutTextView)
         }
         if userPic.image == #imageLiteral(resourceName: "UserPicPlaceholder") {
             invalidFields.append(userPic)
@@ -168,7 +179,8 @@ class RegistrationController: UIViewController {
                                  gender: gender,
                                  login: login,
                                  passwordHash: password.hash,
-                                 profilePicture: userPic.image ?? #imageLiteral(resourceName: "UserPicPlaceholder"))
+                                 profilePicture: userPic.image ?? #imageLiteral(resourceName: "UserPicPlaceholder"),
+                                 about: aboutTextView.text ?? "")
             saveToDatabase(userData: user)
         } else {
             self.highlight(views: invalidFields, withDuration: 3.0)
@@ -244,6 +256,7 @@ class RegistrationController: UIViewController {
             if let imageData = UIImage.jpegData(userData.profilePicture)(compressionQuality: 1) {
                 user.setValue(imageData, forKey: "profilePicture")
             }
+            user.setValue(userData.about, forKey: "about")
         } else {
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "UserData")
             let format = selectedUser?.login ?? ""
@@ -262,6 +275,7 @@ class RegistrationController: UIViewController {
                     if let imageData = UIImage.jpegData(userData.profilePicture)(compressionQuality: 1) {
                         user.setValue(imageData, forKey: "profilePicture")
                     }
+                    user.setValue(userData.about, forKey: "about")
                 }
             } catch {
                 print(error)
@@ -273,7 +287,29 @@ class RegistrationController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    private func pullLogins() -> [String]? {
+        var logins: [String] = []
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return logins }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        do {
+            if let result = try managedContext.fetch(fetchRequest) as? [NSManagedObject] {
+                for data in result {
+                    guard let login = data.value(forKey: "login") as? String else { return logins }
+                    logins.append(login)
+                }
+            } else {
+                print("well...")
+            }
+        } catch {
+            print(error)
+        }
+        return logins
+    }
     private func viewSetup() {
+        if let pulledLogins = pullLogins() {
+            self.logins = pulledLogins
+        }
         self.userPic.layer.borderWidth = 0.5
         self.userPic.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         self.userPic.layer.cornerRadius = userPic.bounds.width / 2
@@ -306,6 +342,8 @@ class RegistrationController: UIViewController {
         self.passwordTextField.layer.cornerRadius = 5.0
         self.repeatPasswordTextField.layer.cornerRadius = 5.0
 
+        self.birthDatePicker.maximumDate = Date()
+
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                                  target: self,
                                                                  action: #selector(validateUserData))
@@ -324,6 +362,25 @@ class RegistrationController: UIViewController {
             object: nil
         )
     }
+// MARK: - validation functions
+    private func isValidPassword(userPassword: String) -> Bool {
+        let passwordRexEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRexEx)
+
+        return passwordTest.evaluate(with: userPassword)
+    }
+    private func isValidFirstName(userName: String) -> Bool {
+        let nameRexEx = "^[A-Z]+[a-z]{2,13}$"
+        let nameTest = NSPredicate(format: "SELF MATCHES %@", nameRexEx)
+
+        return nameTest.evaluate(with: userName)
+    }
+    private func isValidLastName(userName: String) -> Bool {
+        let nameRexEx = "^[A-Z]+[a-zA-Z]{2,13}$"
+        let nameTest = NSPredicate(format: "SELF MATCHES %@", nameRexEx)
+
+        return nameTest.evaluate(with: userName)
+    }
 }
 // MARK: - extensions
 extension RegistrationController: UITextViewDelegate {
@@ -340,7 +397,7 @@ extension RegistrationController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text =  "Please tell us about yourself in a few words."
-            textView.textColor = UIColor.lightGray
+            textView.textColor = .lightGray
         }
     }
 

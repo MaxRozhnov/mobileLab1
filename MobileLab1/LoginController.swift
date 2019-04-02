@@ -12,8 +12,6 @@ import CoreData
 class LoginController: UIViewController {
 
     @IBAction private func logInPressed(_ sender: Any) {
-        print("user tried to log in with username: \(userName) and password: \(userPassword.hash)")
-        print(loginCredentials)
         if loginCredentials[userName] == userPassword.hash {
             performSegue(withIdentifier: "successfullLoginSegue", sender: nil)
         } else {
@@ -53,7 +51,6 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("dnd".hash)
         self.hideKeyboardWhenTappedAround()
         userNameTextField.delegate = self
         userPasswordTextField.delegate = self

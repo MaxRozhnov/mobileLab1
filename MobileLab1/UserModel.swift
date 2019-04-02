@@ -32,5 +32,7 @@ struct UserModel {
 
     let profilePicture: UIImage
 
+    let about: String
+
     //todo add picture here
 }

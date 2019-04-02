@@ -10,34 +10,12 @@ import UIKit
 import CoreData
 
 class AllUsersController: UITableViewController {
+    // MARK: - public properties
     public var login: String?
+// MARK: - private properties
     private var loggedUserIndex: Int = 0
     private var users: [UserModel] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let backButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
-        self.navigationItem.leftBarButtonItem = backButton
-        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "cellIdentifier")
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.updateTable()
-    }
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if loggedUserIndex != indexPath.row {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteUser(at: indexPath.row)
-            updateTable()
-        }
-    }
+// MARK: - private functions
     private func updateTable() {
         if let pulledUsers = self.pullUsers() {
             self.users = pulledUsers
@@ -81,7 +59,7 @@ class AllUsersController: UITableViewController {
         }
         guard let profilePictureData = data.value(forKey: "profilePicture") as? Data else { return nil }
         guard let profilePicture = UIImage(data: profilePictureData) else { return nil }
-
+        guard let about = data.value(forKey: "about") as? String else { return nil }
         let user = UserModel(firstName: firstName,
                              middleName: middleName,
                              lastName: lastName,
@@ -89,10 +67,10 @@ class AllUsersController: UITableViewController {
                              gender: gender,
                              login: login,
                              passwordHash: passwordHash,
-                             profilePicture: profilePicture)
+                             profilePicture: profilePicture,
+                             about: about)
         return user
     }
-
     private func deleteUser(at userIndex: Int) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -108,16 +86,40 @@ class AllUsersController: UITableViewController {
             print(error)
         }
     }
-
+    @objc func logOut() {
+        print("logged out")
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    @objc func addUser() {
+        self.performSegue(withIdentifier: "addUserSegue", sender: nil)
+    }
+// MARK: - overriden functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let backButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addUser))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.navigationItem.rightBarButtonItem = addButton
+        tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "cellIdentifier")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateTable()
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if loggedUserIndex != indexPath.row {
+            return true
+        } else {
+            return false
+        }
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier",
                                                     for: indexPath) as? UserCell {
@@ -135,7 +137,6 @@ class AllUsersController: UITableViewController {
         }
         return UITableViewCell()
     }
-
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.0
     }
@@ -147,20 +148,10 @@ class AllUsersController: UITableViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         }
     }
-
-    @objc func logOut() {
-        print("logged out")
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            deleteUser(at: indexPath.row)
+            updateTable()
+        }
     }
-    */
 }
