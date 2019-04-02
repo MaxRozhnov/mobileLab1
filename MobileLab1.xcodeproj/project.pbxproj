@@ -15,6 +15,10 @@
 		50CDDB20223FCE5D00036919 /* MobileLab1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50CDDB1E223FCE5D00036919 /* MobileLab1.xcdatamodeld */; };
 		50CDDB22223FCE5E00036919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDDB21223FCE5E00036919 /* Assets.xcassets */; };
 		50CDDB25223FCE5E00036919 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDDB23223FCE5E00036919 /* LaunchScreen.storyboard */; };
+		50DC1FAA224D15B600C823B3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC1FA9224D15B600C823B3 /* UserModel.swift */; };
+		50F01EBB224D5FC700A6A905 /* AllUsersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F01EBA224D5FC700A6A905 /* AllUsersController.swift */; };
+		50F01EBF224D67AB00A6A905 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F01EBD224D67AB00A6A905 /* UserCell.swift */; };
+		50F01EC0224D67AB00A6A905 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50F01EBE224D67AB00A6A905 /* UserCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		50CDDB21223FCE5E00036919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50CDDB24223FCE5E00036919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50CDDB26223FCE5E00036919 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50DC1FA9224D15B600C823B3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		50F01EBA224D5FC700A6A905 /* AllUsersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersController.swift; sourceTree = "<group>"; };
+		50F01EBD224D67AB00A6A905 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		50F01EBE224D67AB00A6A905 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 		50CDDB16223FCE5D00036919 /* MobileLab1 */ = {
 			isa = PBXGroup;
 			children = (
+				50F01EBC224D678400A6A905 /* Cell */,
 				50CDDB17223FCE5D00036919 /* AppDelegate.swift */,
 				50CDDB19223FCE5D00036919 /* ViewController.swift */,
 				50CDDB1B223FCE5D00036919 /* Main.storyboard */,
@@ -69,8 +78,19 @@
 				50CDDB1E223FCE5D00036919 /* MobileLab1.xcdatamodeld */,
 				50ABE4CB2240307100F2CCC0 /* RegistrationController.swift */,
 				5001E4C222467AA100959835 /* LoginController.swift */,
+				50DC1FA9224D15B600C823B3 /* UserModel.swift */,
+				50F01EBA224D5FC700A6A905 /* AllUsersController.swift */,
 			);
 			path = MobileLab1;
+			sourceTree = "<group>";
+		};
+		50F01EBC224D678400A6A905 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				50F01EBD224D67AB00A6A905 /* UserCell.swift */,
+				50F01EBE224D67AB00A6A905 /* UserCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F01EC0224D67AB00A6A905 /* UserCell.xib in Resources */,
 				50CDDB25223FCE5E00036919 /* LaunchScreen.storyboard in Resources */,
 				50CDDB22223FCE5E00036919 /* Assets.xcassets in Resources */,
 				50CDDB1D223FCE5D00036919 /* Main.storyboard in Resources */,
@@ -165,10 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F01EBF224D67AB00A6A905 /* UserCell.swift in Sources */,
+				50F01EBB224D5FC700A6A905 /* AllUsersController.swift in Sources */,
 				50CDDB20223FCE5D00036919 /* MobileLab1.xcdatamodeld in Sources */,
 				50CDDB1A223FCE5D00036919 /* ViewController.swift in Sources */,
 				50ABE4CC2240307100F2CCC0 /* RegistrationController.swift in Sources */,
 				50CDDB18223FCE5D00036919 /* AppDelegate.swift in Sources */,
+				50DC1FAA224D15B600C823B3 /* UserModel.swift in Sources */,
 				5001E4C322467AA100959835 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

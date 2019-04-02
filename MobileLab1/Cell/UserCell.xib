@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="105" id="KGk-i7-Jjw" customClass="UserCell" customModule="MobileLab1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="104.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserPicPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="AJp-Pj-15z">
+                        <rect key="frame" x="16" y="15" width="75" height="75"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="7Ej-SI-z7r"/>
+                            <constraint firstAttribute="height" constant="75" id="7Vh-3a-TsO"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="4" translatesAutoresizingMaskIntoConstraints="NO" id="kDV-Ti-wYz">
+                        <rect key="frame" x="111" y="15" width="90" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="ft2-kh-4lL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="4" translatesAutoresizingMaskIntoConstraints="NO" id="yke-Fo-LJ5">
+                        <rect key="frame" x="218" y="15" width="86" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="86" id="IxC-yJ-OoC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exO-Xc-tmX">
+                        <rect key="frame" x="111" y="46.5" width="62" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="62" id="og1-11-xQk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDu-PX-Yqz">
+                        <rect key="frame" x="111" y="75" width="129" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="129" id="NSS-WK-1ea"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kDV-Ti-wYz" firstAttribute="leading" secondItem="AJp-Pj-15z" secondAttribute="trailing" constant="20" id="Cjy-LT-pwg"/>
+                    <constraint firstItem="AJp-Pj-15z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="LkU-3c-Zn7"/>
+                    <constraint firstItem="yke-Fo-LJ5" firstAttribute="top" secondItem="AJp-Pj-15z" secondAttribute="top" id="NJF-qW-yW7"/>
+                    <constraint firstItem="exO-Xc-tmX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OpU-5n-0iL"/>
+                    <constraint firstItem="JDu-PX-Yqz" firstAttribute="bottom" secondItem="AJp-Pj-15z" secondAttribute="bottom" id="aB9-qp-voA"/>
+                    <constraint firstItem="AJp-Pj-15z" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bYP-iR-jym"/>
+                    <constraint firstItem="JDu-PX-Yqz" firstAttribute="leading" secondItem="exO-Xc-tmX" secondAttribute="leading" id="cnT-hM-4OZ"/>
+                    <constraint firstItem="yke-Fo-LJ5" firstAttribute="leading" secondItem="kDV-Ti-wYz" secondAttribute="trailing" constant="17" id="iio-Ox-LF7"/>
+                    <constraint firstItem="exO-Xc-tmX" firstAttribute="leading" secondItem="kDV-Ti-wYz" secondAttribute="leading" id="mCH-Bx-LXp"/>
+                    <constraint firstItem="kDV-Ti-wYz" firstAttribute="top" secondItem="AJp-Pj-15z" secondAttribute="top" id="mbU-3P-4Lv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateOfBirthLabel" destination="JDu-PX-Yqz" id="lkg-jv-koz"/>
+                <outlet property="firstNameLabel" destination="kDV-Ti-wYz" id="tjh-VH-5xZ"/>
+                <outlet property="genderLabel" destination="exO-Xc-tmX" id="31j-WE-XKj"/>
+                <outlet property="lastNameLabel" destination="yke-Fo-LJ5" id="esR-Tb-xDs"/>
+                <outlet property="profilePicture" destination="AJp-Pj-15z" id="FdF-4G-5hW"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="181.25937031484258"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="UserPicPlaceholder" width="62.405406951904297" height="62.405406951904297"/>
+    </resources>
+</document>

@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginController: UIViewController {
 
     @IBAction private func logInPressed(_ sender: Any) {
-        print("user tried to log in with username: \(userName) and password: \(userPassword)")
-        performSegue(withIdentifier: "successfullLoginSegue", sender: nil)
+        print("user tried to log in with username: \(userName) and password: \(userPassword.hash)")
+        print(loginCredentials)
+        if loginCredentials[userName] == userPassword.hash {
+            performSegue(withIdentifier: "successfullLoginSegue", sender: nil)
+        } else {
+            //tell user
+        }
     }
     @IBOutlet private var userPasswordTextField: UITextField!
 
@@ -25,6 +31,7 @@ class LoginController: UIViewController {
     public var userPassword: String {
         return userPasswordTextField.text ?? ""
     }
+    private var loginCredentials: [String: Int] = [:]
 
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -40,21 +47,42 @@ class LoginController: UIViewController {
         }
     }
 
+    @objc func logOut(sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("dnd".hash)
         self.hideKeyboardWhenTappedAround()
         userNameTextField.delegate = self
         userPasswordTextField.delegate = self
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        do {
+            if let result = try managedContext.fetch(fetchRequest) as? [NSManagedObject] {
+                for data in result {
+                    guard let login = data.value(forKey: "login") as? String else { return }
+                    guard let passwordHash = data.value(forKey: "passwordHash") as? Int else { return }
+                    self.loginCredentials[login] = passwordHash
+                }
+            } else {
+                print("well...")
+            }
+        } catch {
+            print(error)
+        }
     }
-    */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "successfullLoginSegue" {
+            if let allUsersController = segue.destination as? AllUsersController {
+                allUsersController.login = userName
+            }
+        }
+    }
 }
 
 extension LoginController: UITextFieldDelegate {
