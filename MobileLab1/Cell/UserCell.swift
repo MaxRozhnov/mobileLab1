@@ -9,13 +9,7 @@
 import UIKit
 
 class UserCell: UITableViewCell {
-
-    @IBOutlet private var firstNameLabel: UILabel!
-    @IBOutlet private var lastNameLabel: UILabel!
-    @IBOutlet private var genderLabel: UILabel!
-    @IBOutlet private var dateOfBirthLabel: UILabel!
-    @IBOutlet private var profilePicture: UIImageView!
-    private var modeledUser: UserModel?
+// MARK: - public properties
     var user: UserModel? {
         get {
             return modeledUser
@@ -29,8 +23,9 @@ class UserCell: UITableViewCell {
             profilePicture.image = modeledUser?.profilePicture
         }
     }
-
-    var firstName: String {
+// MARK: - private properties
+    private var modeledUser: UserModel?
+    private var firstName: String {
         get {
             return firstNameLabel.text ?? ""
         }
@@ -38,7 +33,7 @@ class UserCell: UITableViewCell {
             firstNameLabel.text = newValue
         }
     }
-    var lastName: String {
+    private var lastName: String {
         get {
             return lastNameLabel.text ?? ""
         }
@@ -46,15 +41,15 @@ class UserCell: UITableViewCell {
             lastNameLabel.text = newValue
         }
     }
-    var gender: Gender {
+    private var gender: Gender {
         get {
-            return .male //temp
+            return .male
         }
         set {
             genderLabel.text = newValue.rawValue
         }
     }
-    var dateOfBirth: Date {
+    private var dateOfBirth: Date {
         get {
             return Date(timeIntervalSinceNow: 0)
         }
@@ -62,18 +57,21 @@ class UserCell: UITableViewCell {
             dateOfBirthLabel.text = "\(newValue.age) years old"
         }
     }
+// MARK: - IBOutlets
+    @IBOutlet private var firstNameLabel: UILabel!
+    @IBOutlet private var lastNameLabel: UILabel!
+    @IBOutlet private var genderLabel: UILabel!
+    @IBOutlet private var dateOfBirthLabel: UILabel!
+    @IBOutlet private var profilePicture: UIImageView!
+// MARK: - overriden functions
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.contentView.
-        // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
-
+// MARK: - extensions
 extension Date {
     var age: Int {
         return Calendar.current.dateComponents([.year], from: self, to: Date()).year ?? 0

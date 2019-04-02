@@ -10,7 +10,6 @@
 		5001E4C322467AA100959835 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001E4C222467AA100959835 /* LoginController.swift */; };
 		50ABE4CC2240307100F2CCC0 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABE4CB2240307100F2CCC0 /* RegistrationController.swift */; };
 		50CDDB18223FCE5D00036919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDDB17223FCE5D00036919 /* AppDelegate.swift */; };
-		50CDDB1A223FCE5D00036919 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CDDB19223FCE5D00036919 /* ViewController.swift */; };
 		50CDDB1D223FCE5D00036919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CDDB1B223FCE5D00036919 /* Main.storyboard */; };
 		50CDDB20223FCE5D00036919 /* MobileLab1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50CDDB1E223FCE5D00036919 /* MobileLab1.xcdatamodeld */; };
 		50CDDB22223FCE5E00036919 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50CDDB21223FCE5E00036919 /* Assets.xcassets */; };
@@ -26,7 +25,6 @@
 		50ABE4CB2240307100F2CCC0 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		50CDDB14223FCE5D00036919 /* MobileLab1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileLab1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CDDB17223FCE5D00036919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		50CDDB19223FCE5D00036919 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		50CDDB1C223FCE5D00036919 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		50CDDB1F223FCE5D00036919 /* MobileLab1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MobileLab1.xcdatamodel; sourceTree = "<group>"; };
 		50CDDB21223FCE5E00036919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 			children = (
 				50F01EBC224D678400A6A905 /* Cell */,
 				50CDDB17223FCE5D00036919 /* AppDelegate.swift */,
-				50CDDB19223FCE5D00036919 /* ViewController.swift */,
 				50CDDB1B223FCE5D00036919 /* Main.storyboard */,
 				50CDDB21223FCE5E00036919 /* Assets.xcassets */,
 				50CDDB23223FCE5E00036919 /* LaunchScreen.storyboard */,
@@ -189,7 +186,6 @@
 				50F01EBF224D67AB00A6A905 /* UserCell.swift in Sources */,
 				50F01EBB224D5FC700A6A905 /* AllUsersController.swift in Sources */,
 				50CDDB20223FCE5D00036919 /* MobileLab1.xcdatamodeld in Sources */,
-				50CDDB1A223FCE5D00036919 /* ViewController.swift in Sources */,
 				50ABE4CC2240307100F2CCC0 /* RegistrationController.swift in Sources */,
 				50CDDB18223FCE5D00036919 /* AppDelegate.swift in Sources */,
 				50DC1FAA224D15B600C823B3 /* UserModel.swift in Sources */,
