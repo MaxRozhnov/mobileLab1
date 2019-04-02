@@ -15,7 +15,7 @@ class UserCell: UITableViewCell {
     @IBOutlet private var genderLabel: UILabel!
     @IBOutlet private var dateOfBirthLabel: UILabel!
     @IBOutlet private var profilePicture: UIImageView!
-    private var modeledUser: UserModel?
+
     var user: UserModel? {
         get {
             return modeledUser
@@ -30,7 +30,8 @@ class UserCell: UITableViewCell {
         }
     }
 
-    var firstName: String {
+    private var modeledUser: UserModel?
+    private var firstName: String {
         get {
             return firstNameLabel.text ?? ""
         }
@@ -38,7 +39,7 @@ class UserCell: UITableViewCell {
             firstNameLabel.text = newValue
         }
     }
-    var lastName: String {
+    private var lastName: String {
         get {
             return lastNameLabel.text ?? ""
         }
@@ -46,15 +47,15 @@ class UserCell: UITableViewCell {
             lastNameLabel.text = newValue
         }
     }
-    var gender: Gender {
+    private var gender: Gender {
         get {
-            return .male //temp
+            return .male
         }
         set {
             genderLabel.text = newValue.rawValue
         }
     }
-    var dateOfBirth: Date {
+    private var dateOfBirth: Date {
         get {
             return Date(timeIntervalSinceNow: 0)
         }
@@ -62,15 +63,12 @@ class UserCell: UITableViewCell {
             dateOfBirthLabel.text = "\(newValue.age) years old"
         }
     }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.contentView.
-        // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
 
