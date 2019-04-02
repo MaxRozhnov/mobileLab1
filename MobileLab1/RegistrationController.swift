@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class RegistrationController: UIViewController {
-
+// MARK: - public properties
     public var user: UserModel? {
         get {
             return selectedUser
@@ -19,44 +19,12 @@ class RegistrationController: UIViewController {
             selectedUser = newValue
         }
     }
-
+// MARK: - private propeties
     private var selectedUser: UserModel?
-
-    @IBAction private func pictureTapped(_ sender: Any) {
-        view.endEditing(true)
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Take Photo", style: .default) { _ in
-            self.openCamera()
-        })
-        alert.addAction(UIAlertAction(title: "Choose Photo", style: .default) { _ in
-            self.openGallary()
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    @IBOutlet private var stackView: UIStackView!
-    @IBOutlet private var userPic: UIImageView!
-    @IBOutlet private var firstNameTextField: UITextField!
-    @IBOutlet private var middleNameTextField: UITextField!
-    @IBOutlet private var lastNameTextField: UITextField!
-    @IBOutlet private var genderSegmentedControl: UISegmentedControl!
-    @IBOutlet private var birthDatePicker: UIDatePicker!
-    @IBOutlet private var aboutTextView: UITextView!
-    @IBOutlet private var contentView: UIView!
-    @IBOutlet private var scrollView: UIScrollView!
-    @IBOutlet private var constraintContentHeight: NSLayoutConstraint!
-
-    @IBOutlet private var loginTextField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
-    @IBOutlet private var repeatPasswordTextField: UITextField!
-
     private var lastOffset: CGPoint?
     private var activeField: UITextField?
-    private var aboutFieldIsActive: Bool = false
     private var keyboardHeight: CGFloat?
-
     private var imagePicker = UIImagePickerController()
-
     private var firstName: String {
         return firstNameTextField.text ?? ""
     }
@@ -88,7 +56,35 @@ class RegistrationController: UIViewController {
     private var retypedPassword: String {
         return repeatPasswordTextField.text ?? ""
     }
-
+// MARK: - IBActions
+    @IBAction private func pictureTapped(_ sender: Any) {
+        view.endEditing(true)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Take Photo", style: .default) { _ in
+            self.openCamera()
+        })
+        alert.addAction(UIAlertAction(title: "Choose Photo", style: .default) { _ in
+            self.openGallary()
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+// MARK: - IBOutlets
+    @IBOutlet private var stackView: UIStackView!
+    @IBOutlet private var userPic: UIImageView!
+    @IBOutlet private var firstNameTextField: UITextField!
+    @IBOutlet private var middleNameTextField: UITextField!
+    @IBOutlet private var lastNameTextField: UITextField!
+    @IBOutlet private var genderSegmentedControl: UISegmentedControl!
+    @IBOutlet private var birthDatePicker: UIDatePicker!
+    @IBOutlet private var aboutTextView: UITextView!
+    @IBOutlet private var contentView: UIView!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var constraintContentHeight: NSLayoutConstraint!
+    @IBOutlet private var loginTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var repeatPasswordTextField: UITextField!
+// MARK: - overriden functions
     override func viewDidLoad() {
         super.viewDidLoad()
         if let selectedUserData = selectedUser {
@@ -123,8 +119,8 @@ class RegistrationController: UIViewController {
             allUsersController.login = login
         }
     }
-
-    @objc func keyboardWillShow(_ notification: Notification) {
+// MARK: - private functions
+    @objc private func keyboardWillShow(_ notification: Notification) {
         guard keyboardHeight == nil else {
             return
         }
@@ -139,14 +135,14 @@ class RegistrationController: UIViewController {
             changeScrollViewOffset(frameOrigin: frameOrigin, frameHeight: frameHeight)
         }
     }
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc private func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.3) {
             self.constraintContentHeight.constant -= self.keyboardHeight ?? 0
             self.scrollView.contentOffset = self.lastOffset ?? CGPoint()
         }
         keyboardHeight = nil
     }
-    @objc func validateUserData() {
+    @objc private func validateUserData() {
         var invalidFields: [UIView] = []
         if firstName.isEmpty {
             invalidFields.append(firstNameTextField)
@@ -179,7 +175,7 @@ class RegistrationController: UIViewController {
         }
     }
 
-    func highlight(views: [UIView], withDuration seconds: TimeInterval) {
+    private func highlight(views: [UIView], withDuration seconds: TimeInterval) {
         for view in views {
             if view is UITextView || view is UIImageView {
                 view.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
@@ -197,7 +193,7 @@ class RegistrationController: UIViewController {
             }
         }
     }
-    func changeScrollViewOffset(frameOrigin: CGFloat, frameHeight: CGFloat) {
+    private func changeScrollViewOffset(frameOrigin: CGFloat, frameHeight: CGFloat) {
         let distanceToBottom = self.scrollView.frame.size.height - frameOrigin - frameHeight
         var collapseSpace: CGFloat = keyboardHeight ?? 335.0
         collapseSpace -= distanceToBottom
@@ -210,7 +206,7 @@ class RegistrationController: UIViewController {
             }
         }
     }
-    func openCamera() {
+    private func openCamera() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             imagePicker.sourceType = UIImagePickerController.SourceType.camera
             imagePicker.allowsEditing = true
@@ -226,13 +222,13 @@ class RegistrationController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    func openGallary() {
+    private func openGallary() {
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
         self.present(imagePicker, animated: true, completion: nil)
     }
-    func saveToDatabase(userData: UserModel) {
+    private func saveToDatabase(userData: UserModel) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         if selectedUser == nil {
@@ -277,7 +273,6 @@ class RegistrationController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
-
     private func viewSetup() {
         self.userPic.layer.borderWidth = 0.5
         self.userPic.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
@@ -330,10 +325,9 @@ class RegistrationController: UIViewController {
         )
     }
 }
-
+// MARK: - extensions
 extension RegistrationController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        aboutFieldIsActive = true
         let frameOrigin = stackView.frame.origin.y + aboutTextView.frame.origin.y
         let frameHeight = aboutTextView.frame.size.height//aboutTextView.frame.size.height
         changeScrollViewOffset(frameOrigin: frameOrigin, frameHeight: frameHeight)
@@ -342,7 +336,6 @@ extension RegistrationController: UITextViewDelegate {
     }
 
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        aboutFieldIsActive = false
         return true
     }
 

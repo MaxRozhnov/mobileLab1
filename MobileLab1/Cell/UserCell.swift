@@ -9,12 +9,6 @@
 import UIKit
 
 class UserCell: UITableViewCell {
-// MARK: - Outlets
-    @IBOutlet private var firstNameLabel: UILabel!
-    @IBOutlet private var lastNameLabel: UILabel!
-    @IBOutlet private var genderLabel: UILabel!
-    @IBOutlet private var dateOfBirthLabel: UILabel!
-    @IBOutlet private var profilePicture: UIImageView!
 // MARK: - public properties
     var user: UserModel? {
         get {
@@ -63,6 +57,12 @@ class UserCell: UITableViewCell {
             dateOfBirthLabel.text = "\(newValue.age) years old"
         }
     }
+// MARK: - IBOutlets
+    @IBOutlet private var firstNameLabel: UILabel!
+    @IBOutlet private var lastNameLabel: UILabel!
+    @IBOutlet private var genderLabel: UILabel!
+    @IBOutlet private var dateOfBirthLabel: UILabel!
+    @IBOutlet private var profilePicture: UIImageView!
 // MARK: - overriden functions
     override func awakeFromNib() {
         super.awakeFromNib()
