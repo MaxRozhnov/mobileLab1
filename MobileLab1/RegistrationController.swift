@@ -22,7 +22,7 @@ class RegistrationController: UIViewController {
 // MARK: - private propeties
     private var selectedUser: UserModel?
     private var lastOffset: CGPoint?
-    private var activeField: UITextField?
+    private var activeField: UIView?
     private var keyboardHeight: CGFloat?
     private var imagePicker = UIImagePickerController()
     private var firstName: String {
@@ -328,49 +328,40 @@ class RegistrationController: UIViewController {
 // MARK: - extensions
 extension RegistrationController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        let frameOrigin = stackView.frame.origin.y + aboutTextView.frame.origin.y
-        let frameHeight = aboutTextView.frame.size.height//aboutTextView.frame.size.height
-        changeScrollViewOffset(frameOrigin: frameOrigin, frameHeight: frameHeight)
-        lastOffset = self.scrollView.contentOffset
+        beginEditingRoutine(field: textView)
         return true
     }
-
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        return true
-    }
-
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.black
         }
     }
-
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text =  "Please tell us about yourself in a few words."
             textView.textColor = UIColor.lightGray
         }
     }
+
+    private func beginEditingRoutine(field: UIView) {
+        activeField = field
+        lastOffset = self.scrollView.contentOffset
+        if field.isDescendant(of: stackView) {
+            changeScrollViewOffset(frameOrigin: stackView.frame.origin.y + field.frame.origin.y,
+                                   frameHeight: field.frame.size.height)
+        } else {
+            changeScrollViewOffset(frameOrigin: field.frame.origin.y,
+                                   frameHeight: field.frame.size.height)
+        }
+        lastOffset = self.scrollView.contentOffset
+    }
 }
 extension RegistrationController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        activeField = textField
-        lastOffset = self.scrollView.contentOffset
+        beginEditingRoutine(field: textField)
         return true
     }
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        lastOffset = self.scrollView.contentOffset
-        if textField.isDescendant(of: stackView) {
-        changeScrollViewOffset(frameOrigin: stackView.frame.origin.y + textField.frame.origin.y,
-                               frameHeight: textField.frame.size.height)
-        } else {
-            changeScrollViewOffset(frameOrigin: textField.frame.origin.y,
-                                   frameHeight: textField.frame.size.height)
-        }
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         activeField = nil
@@ -384,7 +375,6 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.isNavigationBarHidden = false
         self.dismiss(animated: true, completion: nil)
